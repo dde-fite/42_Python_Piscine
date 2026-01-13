@@ -1,6 +1,5 @@
 class Plant:
-    """
-    A class representing a Plant.
+    """A class representing a Plant.
 
     Attributes:
         name (str): Plant name
@@ -9,8 +8,7 @@ class Plant:
     """
 
     def __init__(self, name: str, height: int, age: int):
-        """
-        Initialize a Plant object.
+        """Initialize a Plant object.
 
         Args:
             name (str): Plant name
@@ -21,28 +19,21 @@ class Plant:
         self.height: int = height
         self.age: int = age
 
-    def get_name(self):
-        """
-        Returns the name of the Plant.
-        """
+    def get_name(self) -> str:
+        """Returns the name of the Plant."""
         return self.name
 
-    def get_height(self):
-        """
-        Returns the height of the Plant.
-        """
+    def get_height(self) -> int:
+        """Returns the height of the Plant."""
         return self.height
 
-    def get_age(self):
-        """
-        Returns the age of the Plant.
-        """
+    def get_age(self) -> int:
+        """Returns the age of the Plant."""
         return self.age
 
 
-def print_json(plants: list[Plant]):
-    """
-    Prints in JSON format the details of the plants.
+def print_json(plants: list[Plant]) -> None:
+    """Prints in JSON format the details of the plants.
 
     Args:
         plants (list[Plant]): Lists of Plants objects
@@ -59,9 +50,8 @@ def print_json(plants: list[Plant]):
     print("}")
 
 
-def list_len(list: list[Plant]):
-    """
-    Returns the quantity of Plants in a list
+def list_len(list: list[Plant]) -> int:
+    """Returns the quantity of Plants in a list
 
     Args:
         list (list[Plant]): Lists of Plants objects
@@ -70,7 +60,7 @@ def list_len(list: list[Plant]):
         int: Number of plants
     """
     len: int = 0
-    for item in list:  # pyright: ignore[reportUnusedVariable]
+    for _item in list:
         len += 1
     return len
 

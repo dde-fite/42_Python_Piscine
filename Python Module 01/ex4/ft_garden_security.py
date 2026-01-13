@@ -1,6 +1,5 @@
 class SecurePlant:
-    """
-    A class representing a SecurePlant.
+    """A class representing a SecurePlant.
 
     Attributes:
         name (str): Plant name
@@ -9,8 +8,7 @@ class SecurePlant:
     """
 
     def __init__(self, name: str, height: int, age: int):
-        """
-        Initialize a SecurePlant object.
+        """Initialize a SecurePlant object.
 
         Args:
             name (str): Plant name
@@ -22,27 +20,20 @@ class SecurePlant:
         self.__age: int = age
         print(f"Plant created: {self.__name}")
 
-    def get_name(self):
-        """
-        Returns the name of the Plant.
-        """
+    def get_name(self) -> str:
+        """Returns the name of the Plant."""
         return self.__name
 
-    def get_height(self):
-        """
-        Returns the height of the Plant.
-        """
+    def get_height(self) -> int:
+        """Returns the height of the Plant."""
         return self.__height
 
-    def get_age(self):
-        """
-        Returns the age of the Plant.
-        """
+    def get_age(self) -> int:
+        """Returns the age of the Plant."""
         return self.__age
 
-    def set_height(self, height: int):
-        """
-        Sets a new value for height.
+    def set_height(self, height: int) -> None:
+        """Sets a new value for height.
 
         Args:
             height (int): Height in cm.
@@ -55,9 +46,8 @@ class SecurePlant:
         self.__height = height
         print(f"Height updated: {self.__height}cm [OK]")
 
-    def set_age(self, age: int):
-        """
-        Sets a new value for age.
+    def set_age(self, age: int) -> None:
+        """Sets a new value for age.
 
         Args:
             age (int): Age in days.
@@ -71,9 +61,8 @@ class SecurePlant:
         print(f"Age updated: {self.__age} days [OK]")
 
     def security_exception(self, msg: str = "There has been a "
-                           "security exception."):
-        """
-        Broadcasts a security problem.
+                           "security exception.") -> None:
+        """Broadcasts a security problem.
 
         Args:
             msg (str, optional): Message to broadcast. Defaults to "There has

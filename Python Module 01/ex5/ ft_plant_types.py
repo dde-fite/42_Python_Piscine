@@ -2,8 +2,7 @@ PI_NUMBER = 3.14159265358979323846264338327950288419716939937510582097494459230
 
 
 class Plant:
-    """
-    A class representing a Plant.
+    """A class representing a Plant.
 
     Attributes:
         name (str): Plant name
@@ -12,8 +11,7 @@ class Plant:
     """
 
     def __init__(self, name: str, height: int, age: int):
-        """
-        Initialize a Plant object.
+        """Initialize a Plant object.
 
         Args:
             name (str): Plant name
@@ -26,8 +24,7 @@ class Plant:
 
 
 class Flower(Plant):
-    """
-    Subclass of Plant for representing a Flower.
+    """Subclass of Plant for representing a Flower.
 
     Attributes:
         name (str): Flower name
@@ -36,8 +33,7 @@ class Flower(Plant):
         color (str): Flower color.
     """
     def __init__(self, name: str, height: int, age: int, color: str):
-        """
-        Initializes a Flower object.
+        """Initializes a Flower object.
 
         Args:
             name (str): Flower name
@@ -48,16 +44,13 @@ class Flower(Plant):
         super().__init__(name, height, age)
         self.color = color
 
-    def bloom(self):
-        """
-        Prints the blooming state of the Flower.
-        """
+    def bloom(self) -> None:
+        """Prints the blooming state of the Flower."""
         print(f"{self.name} is blooming beautifully!\n")
 
 
 class Tree(Plant):
-    """
-    Subclass of Plant for representing a Tree.
+    """Subclass of Plant for representing a Tree.
 
     Attributes:
         name (str): Tree name
@@ -66,8 +59,7 @@ class Tree(Plant):
         trunk_diameter (int): Tree diameter in cm.
     """
     def __init__(self, name: str, height: int, age: int, trunk_diameter: int):
-        """
-        Initializes a Tree object.
+        """Initializes a Tree object.
 
         Args:
             name (str): Tree name
@@ -78,9 +70,8 @@ class Tree(Plant):
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
-    def produce_shade(self):
-        """
-        Calculate the area of shade in square meters for an oak tree.
+    def produce_shade(self) -> None:
+        """Calculate the area of shade in square meters for an oak tree.
 
         The mathematical formula is an example that you cannot take seriously,
         but it seemed pointless to me to make the function display a
@@ -93,8 +84,7 @@ class Tree(Plant):
 
 
 class Vegetable(Plant):
-    """
-    Subclass of Plant for representing a Vegetable.
+    """Subclass of Plant for representing a Vegetable.
 
     Attributes:
         name (str): Vegetable name
@@ -105,8 +95,7 @@ class Vegetable(Plant):
     """
     def __init__(self, name: str, height: int, age: int,
                  harvest_season: str, nutritional_value: str):
-        """
-        Initializes a Vegetable object.
+        """Initializes a Vegetable object.
 
         Args:
             name (str): Vegetable name
