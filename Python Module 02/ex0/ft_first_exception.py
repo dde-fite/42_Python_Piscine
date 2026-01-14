@@ -10,7 +10,7 @@ def check_temperature(temp_str: str) -> int | None:
             return None
         print(f"Temperature {temp_str}°C is perfect for plants!")
         return parsed
-    except BaseException:
+    except Exception:
         print(f"Error: '{temp_str}' is not a valid number")
     return None
 
