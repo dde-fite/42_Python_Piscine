@@ -259,6 +259,11 @@ class GardenManager():
         cls._gardens.append(garden)
         return garden
 
+    def create_garden_network(cls, gardens_name: list[str], author: str
+                              ) -> None:
+        for garden in gardens_name:
+            cls.create_garden(garden, author)
+
     @classmethod
     def remove_garden(cls, garden: Garden) -> None:
         """Removes a garden from the manager.
