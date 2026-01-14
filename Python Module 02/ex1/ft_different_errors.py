@@ -38,7 +38,7 @@ def test_error_types() -> None:
             print(file)
         test_dic = {"test1": True}
         print(test_dic["test2"])
-    except:
+    except BaseException:
         print("Caught an error, but program continues!")
     print("\nAll error types tested successfully!")
 

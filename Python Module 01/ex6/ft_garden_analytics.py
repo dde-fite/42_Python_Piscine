@@ -227,7 +227,7 @@ class Garden():
             if i == 0:
                 print(f"{GardenManager.plant_types[p_type]}: ", end='')
             else:
-                print(f", {GardenManager.plant_types[p_type]}: ",  end='')
+                print(f", {GardenManager.plant_types[p_type]}: ", end='')
             print(count_plant_type[p_type.__name__], end='')
             i += 1
         print()
