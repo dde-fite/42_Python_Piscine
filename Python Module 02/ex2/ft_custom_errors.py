@@ -1,14 +1,17 @@
 class GardenError(Exception):
+    """Generic error for garden problems."""
     def __init__(self, msg: str):
         self.msg = msg
 
 
 class PlantError(GardenError):
+    """Error for problems with plants, inherited from GardenError"""
     def __init__(self, msg: str):
         self.msg = msg
 
 
 class WaterError(GardenError):
+    """Error for problems with water, inherited from GardenError"""
     def __init__(self, msg: str):
         self.msg = msg
 

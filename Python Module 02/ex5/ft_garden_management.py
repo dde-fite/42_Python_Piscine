@@ -1,15 +1,18 @@
 class GardenError(Exception):
+    """Generic error for garden problems."""
     def __init__(self, msg: str):
         self.msg = msg
 
 
 class PlantError(GardenError):
+    """Error for problems with plants, inherited from GardenError."""
     def __init__(self, msg: str, plant_name: str = ""):
         self.msg = msg
         self.plant_name = plant_name
 
 
 class WaterError(GardenError):
+    """Error for problems with water, inherited from GardenError."""
     def __init__(self, msg: str):
         self.msg = msg
 
@@ -18,7 +21,9 @@ class Plant:
     """A class representing a Plant.
 
     Attributes:
-        name (str): Plant name
+        name (str): Plant name.
+        water (int): Water level of the plant.
+        sun (int): Sunlight level of the plant.
     """
 
     def __init__(self, name: str, water: int, sun: int) -> None:
@@ -26,6 +31,8 @@ class Plant:
 
         Args:
             name (str): Plant name
+            water (int): Water level of the plant.
+            sun (int): Sunlight level of the plant.
         """
         self.__name: str = name
         self.__water: int = water
@@ -36,7 +43,14 @@ class Plant:
         return self.__name
 
     def set_name(self, name: str) -> None:
-        """Sets the name of the Plant."""
+        """Sets the name of the Plant.
+
+        Args:
+            name (str): New plant name.
+
+        Raises:
+            PlantError: In case of invalid name
+        """
         try:
             if name is None or name == "":
                 raise PlantError("Plant name cannot be empty!")
@@ -67,7 +81,10 @@ class GardenManager():
         """Adds a plant to the garden.
 
         Args:
-            plant: Plant instance to add
+            plant (Plant): Plant instance to add
+
+        Raises:
+            PlantError: In case of invalid name.
         """
         try:
             if plant.get_name() is None or plant.get_name() == "":
@@ -81,7 +98,7 @@ class GardenManager():
         """Removes a plant from the garden.
 
         Args:
-            plant: Plant instance to remove
+            plant (Plant): Plant instance to remove
         """
         self.__plants.remove(plant)
         print(f"Removed {plant.get_name()}")
@@ -91,6 +108,10 @@ class GardenManager():
         return self.__plants.copy()
 
     def water_plants(self) -> None:
+        """Waters all the plants in the GardenManager.
+
+        It managed the WaterError
+        """
         print("Opening watering system")
         try:
             for plant in self.__plants:
@@ -101,6 +122,11 @@ class GardenManager():
             print("Closing watering system (cleanup)")
 
     def check_health(self) -> None:
+        """Evaluates the values of each plant managed.
+
+        Raises:
+            PlantError: In case of invalid values.
+        """
         try:
             for plant in self.__plants:
                 water = plant.get_water()

@@ -1,4 +1,8 @@
 def garden_operations() -> None:
+    """Tests statically multiple error types.
+
+    These errors are ValueError, ZeroDivisionError, FileNotFoundError, KeyError
+    """
     print("\nTesting ValueError...")
     try:
         int("hi!")
@@ -27,6 +31,7 @@ def garden_operations() -> None:
 
 
 def test_error_types() -> None:
+    """Calls garden_operations() and tests multiple errors together."""
     print("=== Garden Error Types Demo ===")
     garden_operations()
 
