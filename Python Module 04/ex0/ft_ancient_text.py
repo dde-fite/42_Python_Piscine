@@ -8,8 +8,7 @@ try:
         print("Connection established...")
         print("\nRECOVERED DATA:\n"
               f"{file.read()}")
+        file.close()
+        print("\nData recovery complete. Storage unit disconnected.")
 except FileNotFoundError:
     print("ERROR: Storage vault not found")
-finally:
-    file.close()
-    print("\nData recovery complete. Storage unit disconnected.")
