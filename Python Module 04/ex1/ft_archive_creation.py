@@ -4,18 +4,20 @@ to_preverve: str = "{[}ENTRY 001{]} New quantum algorithm discovered\n\
 
 print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===")
 
-file_name: str = " new_discovery.txt"
+file_name: str = "new_discovery.txt"
 
 print(f"\nInitializing new storage unit: {file_name}")
 
 try:
-    with open(file_name, 'x') as file:
-        print("Storage unit created successfully...")
+    file = open(file_name, 'x')
+    print("Storage unit created successfully...")
+    try:
         print("\nInscribing preservation data...\n"
               f"{to_preverve}")
         file.write(to_preverve)
+    finally:
         file.close()
-        print("\nData inscription complete. Storage unit sealed.\n"
-              "Archive 'new_discovery.txt' ready for long-term preservation")
+        print("\nData inscription complete. Storage unit sealed.")
+    print(f"Archive '{file_name}' ready for long-term preservation")
 except FileExistsError:
     print("ERROR: A storage vault already exists")
