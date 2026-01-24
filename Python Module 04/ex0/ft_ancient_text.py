@@ -4,10 +4,12 @@ file_name: str = "ancient_fragment.txt"
 
 print(f"\nAccessing Storage Vault: {file_name}")
 try:
-    with open(file_name, 'r') as file:
-        print("Connection established...")
+    file = open(file_name, 'r')
+    print("Connection established...")
+    try:
         print("\nRECOVERED DATA:\n"
               f"{file.read()}")
+    finally:
         file.close()
         print("\nData recovery complete. Storage unit disconnected.")
 except FileNotFoundError:
