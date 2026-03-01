@@ -166,7 +166,6 @@ class StreamAdapter(ProcessingPipeline):
         return data
 
 
-# TODO
 class NexusManager:
     def __init__(self) -> None:
         self.pipelines: list[ProcessingPipeline] = []
@@ -190,7 +189,7 @@ class NexusManager:
                            "readings": [18.9, 22.2, 15.21, 24.01, 30],
                            "unit": "ºC"})
 
-    def _process_incorrect_data(self) -> None:
+    def process_incorrect_data(self) -> None:
         print("Simulating pipeline failure...")
         self.pipelines[0].process([])
 
@@ -213,7 +212,7 @@ def main():
           "Performance: 95% efficiency, 0.2s total processing time")
 
     print("\n=== Error Recovery Test ===")
-    manager._process_incorrect_data()
+    manager.process_incorrect_data()
 
     print("\nNexus Integration complete. All systems operational.")
 
