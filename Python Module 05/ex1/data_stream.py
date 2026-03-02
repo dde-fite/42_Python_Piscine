@@ -295,23 +295,23 @@ print("\nInitializing Sensor Stream...\n"
       f"Stream ID: {sensor.stream_id}, Type: {sensor.stream_type}\n"
       f"{sensor.process_batch(['temp:22.5', 'humidity:65', 'pressure:1013'])}")
 stats = sensor.get_stats()
-print(f"Sensor analysis: {stats["processed_count"]} readings processed, "
-      f"avg temp: {stats["avg_tmp"]}ºC")
+print(f"Sensor analysis: {stats['processed_count']} readings processed, "
+      f"avg temp: {stats['avg_tmp']}ºC")
 
 print("\nInitializing Transaction Stream...\n"
       f"Stream ID: {transaction.stream_id}, Type: {transaction.stream_type}\n"
       f"{transaction.process_batch(['buy:100', 'sell:150', 'buy:75'])}")
 stats = transaction.get_stats()
-print(f"Transaction analysis: {stats["processed_count"]} operations, "
-      f"net flow: {["", "+"][int(stats["net"]) > 0] + str(stats["net"])} "
+print(f"Transaction analysis: {stats['processed_count']} operations, "
+      f"net flow: {['', '+'][int(stats['net']) > 0] + str(stats['net'])} "
       "units")
 
 print("\nInitializing Event Stream...\n"
       f"Stream ID: {event.stream_id}, Type: {event.stream_type}\n"
       f"{event.process_batch(['login', 'error', 'logout'])}")
 stats = event.get_stats()
-print(f"Event analysis: {stats["processed_count"]} events, {stats["errors"]} "
-      f"error{"s" if int(stats["errors"]) > 1 else ""} detected")
+print(f"Event analysis: {stats['processed_count']} events, {stats['errors']} "
+      f"error{'s' if int(stats['errors']) > 1 else ''} detected")
 
 print("\n=== Polymorphic Stream Processing ===\n"
       "Processing mixed stream types through unified interface...")
@@ -329,20 +329,22 @@ mixed_batches = {
 results = processor.process_all(mixed_batches)
 print(f"Batch {len(results)} Results:")
 for res in results:
-    print(f"- {res["stream_type"]} data: {res["processed_count"]} proccesed")
+    print(f"- {res['stream_type']} data: {res['processed_count']} proccesed")
 
 print("\nStream filtering active: High-priority data only")
 filtered = sensor.filter_data(
     ["temp:100", "temp:22", "alert:critical"], "critical"
 )
-print("Filtered results: "
-      f"{len(sensor.filter_data(
+print("Filtered results:",
+      len(sensor.filter_data(
           ['critical:temp', 'critical:wind', 'pressure:1000'],
           'critical')
-          )} critical sensor alerts, "
-      f"{len(transaction.filter_data(
+          ),
+      "critical sensor alerts,",
+      len(transaction.filter_data(
           ['buy:10000', 'sell:23'],
           'buy')
-          )} large transaction")
+          ),
+      "large transaction")
 
 print("\nAll streams processed successfully. Nexus throughput optimal.")
