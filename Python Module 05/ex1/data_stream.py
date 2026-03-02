@@ -10,7 +10,8 @@ class InvalidFormat(Exception):
 
 class DataStream(ABC):
     """Abstract base class for all data stream types."""
-    def __init__(self, stream_id: str, stream_type: str, data_type: str):
+    def __init__(self, stream_id: str, stream_type: str, data_type: str
+                 ) -> None:
         """Initializes the base stream metadata.
 
         Args:
@@ -24,22 +25,22 @@ class DataStream(ABC):
         self._processed_count: int = 0
 
     @property
-    def stream_id(self):
+    def stream_id(self) -> str:
         """Returns the ID of the stream."""
         return self.__stream_id
 
     @property
-    def stream_type(self):
+    def stream_type(self) -> str:
         """Returns the category of the stream."""
         return self.__stream_type
 
     @property
-    def data_type(self):
+    def data_type(self) -> str:
         """Returns the description of the data carried by the stream."""
         return self.__data_type
 
     @property
-    def processed_count(self):
+    def processed_count(self) -> int:
         """Returns the number of processed data entries."""
         return self._processed_count
 
@@ -100,7 +101,7 @@ class DataStream(ABC):
 
 class SensorStream(DataStream):
     """Data stream specialized for environmental sensor readings."""
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         """Initializes a sensor data stream.
 
         Args:
@@ -145,7 +146,7 @@ class SensorStream(DataStream):
 
 class TransactionStream(DataStream):
     """Data stream specialized for financial transaction events."""
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         """Initializes a transaction data stream.
 
         Args:
@@ -195,7 +196,7 @@ class TransactionStream(DataStream):
 
 class EventStream(DataStream):
     """Data stream specialized for system event monitoring."""
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         """Initializes an event monitoring stream.
 
         Args:
@@ -255,7 +256,7 @@ class StreamProcessor:
                 return s
         raise KeyError("Stream not found")
 
-    def register_stream(self, stream: DataStream):
+    def register_stream(self, stream: DataStream) -> None:
         """Registers a new data stream.
 
         Args:
@@ -263,7 +264,8 @@ class StreamProcessor:
         """
         self.__streams.append(stream)
 
-    def process_all(self, batches: Dict[str, List[Any]]):
+    def process_all(self, batches: Dict[str, List[Any]]
+                    ) -> list[Dict[str, Union[str, int, float]]]:
         """Processes batches for all registered streams.
 
         Args:
