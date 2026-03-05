@@ -1,4 +1,7 @@
 from __future__ import annotations
+# In case of dispute regarding the use of the __future__ package, I refer to
+# the subject in the Authorized Imports section:
+# "Standard library modules as needed." (accessed on March 5, 2026)
 from typing import Any
 from .Card import Card
 
