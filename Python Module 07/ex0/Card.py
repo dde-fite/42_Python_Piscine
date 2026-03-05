@@ -1,3 +1,4 @@
+from typing import Any
 from abc import ABC, abstractmethod
 
 
@@ -8,9 +9,9 @@ class Card(ABC):
         self.rarity: str = rarity
 
     @abstractmethod
-    def play(self, game_state: dict) -> dict: ...
+    def play(self, game_state: dict[str, Any]) -> dict[str, Any]: ...
 
-    def get_card_info(self) -> dict:
+    def get_card_info(self) -> dict[str, Any]:
         return {
             "name": self.name,
             "cost": self.cost,
