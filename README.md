@@ -4,5 +4,6 @@
 </p>
 
 <p align="center">
-    <img alt="Static Badge" src="https://img.shields.io/badge/pending/100-yellow?logo=42&logoColor=white">
+    <img alt="pending score" src="https://img.shields.io/badge/pending/100-yellow?logo=42&logoColor=white">
+    <img src="https://codestats.cloud.defitero.com/api/badge/nora.defitero/interval:any/project:42_Python_Piscine">
 </p>
