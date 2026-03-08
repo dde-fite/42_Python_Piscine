@@ -33,11 +33,11 @@ class CreatureCard(Card):
             'effect': 'Creature summoned to battlefield'
         }
 
-    def attack_target(self, target: CreatureCard) -> dict[str, Any]:
+    def attack_target(self, target: Card) -> dict[str, Any]:
         target.health -= self.attack
         return {
             'attacker': self.name,
             'target': target.name,
             'damage_dealt': self.attack,
-            'combat_resolved': bool(target.health <= 0)
+            'combat_resolved': target.health <= 0
         }

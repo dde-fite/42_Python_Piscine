@@ -7,6 +7,7 @@ class Card(ABC):
         self.name: str = name
         self.cost: int = cost
         self.rarity: str = rarity
+        self.health = 8
 
     @abstractmethod
     def play(self, game_state: dict[str, Any]) -> dict[str, Any]: ...
