@@ -1,3 +1,5 @@
+# REMEMBER TO TEST EXERCISES WITH python -m ex0.main FROM REPO'S ROOT
+
 from typing import Any
 from .CreatureCard import CreatureCard
 
