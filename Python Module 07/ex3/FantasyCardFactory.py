@@ -11,17 +11,17 @@ class FantasyCardFactory(CardFactory):
     def __init__(self) -> None:
         self.available: dict[str, dict[str, list[Any]]] = {
             'creature': {
-                'dragon': ["Fire Dragon"],
-                'goblin': ["Goblin Warrior"],
+                'dragon': ["Fire Dragon", 7, "Legendary", 8, 8],
+                'goblin': ["Goblin Warrior", 2, "Common", 2, 2],
                 'default': ["Default", 0, "None", 0, 0]
             },
             'spell': {
-                'fireball': [],
+                'fireball': ["Fireball", 4, "Rare", "damage"],
                 'default': ["Default", 0, "None", "None"]
                 },
             'artifact': {
-                'mana_ring': [],
-                'default': ["Default", 0, 0, "None"]
+                'mana_ring': ["Mana Ring", 1, "Common", 5, "mana_boost"],
+                'default': ["Default", 0, "None", 0, "None"]
                 }
         }
 
@@ -60,18 +60,20 @@ class FantasyCardFactory(CardFactory):
             card = self.available['artifact']['default']
         return ArtifactCard(*card)
 
-    def create_themed_deck(self, size: int) -> dict[int, Card]:
-        deck: dict[int, Card] = dict()
-        for i in range(0, size):
+    def create_themed_deck(self, size: int) -> dict[str, Any]:
+        deck: dict[str, Any] = {
+            'cards': [],
+            'size': size
+        }
+        cards = deck['cards']
+        for _i in range(0, size):
             function = None
             cat = None
             while not function:
                 cat = choice(list(self.available.keys()))
-                print(f"create_{cat}")
                 function = getattr(self, f"create_{cat}", None)
-            deck[i] = function(choice(self.available[cat]))
+            cards.append(function(choice(list(self.available[cat].values()))))
         return deck
-
 
     def get_supported_types(self) -> dict[str, list[str]]:
         return {
