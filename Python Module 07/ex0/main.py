@@ -8,6 +8,7 @@ game_state: dict[str, Any] = {
 }
 
 creature = CreatureCard("Fire Dragon", 5, "Legendary", 7, 5)
+creature_2 = CreatureCard("Goblin Warrior", 6, "Rare", 3, 7)
 
 print("\n=== DataDeck Card Foundation ===\n"
       "\nTesting Abstract Base Class Design:"
@@ -20,9 +21,7 @@ print("\n=== DataDeck Card Foundation ===\n"
       f"Play result: {creature.play(game_state)}\n"
 
       "\nFire Dragon attacks Goblin Warrior:\n"
-      f"Attack result: {creature.attack_target(
-          CreatureCard("Goblin Warrior", 6, "Rare", 3, 7)
-          )}\n"
+      f"Attack result: {creature.attack_target(creature_2)}\n"
 
       "\nTesting insufficient mana (3 available):\n"
       f"Playable: {creature.is_playable(game_state['mana'])}\n"

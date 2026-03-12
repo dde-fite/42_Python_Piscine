@@ -7,24 +7,31 @@ game_state = {
     'mana': 9
 }
 
+card = [m for m in dir(Card) if callable(getattr(Card, m))
+        and not m.startswith('__')]
+combatable = [m for m in dir(Combatable) if callable(getattr(Combatable, m))
+              and not m.startswith('__')]
+magical = [m for m in dir(Magical) if callable(getattr(Magical, m))
+           and not m.startswith('__')]
+
 elite_card = EliteCard("Arcane Warrior", 5, "Legendary")
+
+spell = elite_card.cast_spell(
+        'Fireball',
+        [
+            EliteCard('Enemy1', 4, 'Legendary'),
+            EliteCard('Enemy2', 4, 'Legendary')
+        ]
+        )
+
 
 print(
     "\n=== DataDeck Ability System ===\n"
 
     "\nEliteCard capabilities:\n"
-    f"- Card: {
-        [m for m in dir(Card) if callable(getattr(Card, m))
-         and not m.startswith('__')]
-      }\n"
-    f"- Combatable: {
-        [m for m in dir(Combatable) if callable(getattr(Combatable, m))
-         and not m.startswith('__')]
-      }\n"
-    f"- Magical: {
-        [m for m in dir(Magical) if callable(getattr(Magical, m))
-         and not m.startswith('__')]
-      }\n"
+    f"- Card: {card}\n"
+    f"- Combatable: {combatable}\n"
+    f"- Magical: {magical}\n"
 
     f"\nPlaying {elite_card.name} ({type(elite_card).__name__}): \
     {'' if elite_card.play(game_state) else ' Failed'}\n"
@@ -34,13 +41,7 @@ print(
     f"Defense result: {elite_card.defend(5)}\n"
 
     "\nMagic phase:\n"
-    f"Spell cast: {elite_card.cast_spell(
-        'Fireball',
-        [
-            EliteCard('Enemy1', 4, 'Legendary'),
-            EliteCard('Enemy2', 4, 'Legendary')
-        ]
-        )}\n"
+    f"Spell cast: {spell}\n"
     f"Mana channel: {elite_card.channel_mana(3)}\n"
 
     "\nMultiple interface implementation successful!\n"
