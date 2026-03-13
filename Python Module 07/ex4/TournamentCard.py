@@ -6,9 +6,15 @@ from ex2.Combatable import Combatable
 
 
 class TournamentCard(Card, Combatable, Rankable):
-    def __init__(self, name: str, cost: int, rarity: str, id: str) -> None:
+    def __init__(self, name: str, cost: int, rarity: str, id: str,
+                 base_rating: int = 1200) -> None:
         super().__init__(name, cost, rarity)
         self.id: str = id
+        self.base_rating = base_rating
+        self.stats = {
+            'wins': 0,
+            'losses': 0
+        }
 
     def play(self, game_state: dict[str, Any]) -> dict[str, Any]:
         if not self.is_playable(game_state["mana"]):
@@ -55,16 +61,17 @@ class TournamentCard(Card, Combatable, Rankable):
         }
 
     def calculate_rating(self) -> int:
-        pass
+        return (self.base_rating +
+                (self.stats['wins'] - self.stats['losses']) * 16)
 
     def update_wins(self, wins: int) -> None:
-        pass
+        self.stats['wins'] += wins
 
     def update_losses(self, losses: int) -> None:
-        pass
+        self.stats['losses'] += losses
 
     def get_rank_info(self) -> dict[str, Any]:
         pass
 
     def get_tournament_stats(self) -> dict[str, Any]:
-        pass
+        return self.stats.copy()
