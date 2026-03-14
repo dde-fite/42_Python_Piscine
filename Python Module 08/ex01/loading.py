@@ -1,7 +1,15 @@
-import requests
-import pandas as pd
-import matplotlib as mtl
-import matplotlib.pyplot as plt
+try:
+    import requests
+    import pandas as pd
+    import matplotlib as mtl
+    import matplotlib.pyplot as plt
+except ModuleNotFoundError as e:
+    print(f"ERROR: '{e.name}' module is not installed\n"
+
+          "\nYou can fulfill all the required dependencies with:\n"
+          "  - PIP: 'pip install -r requirements.txt'\n"
+          "  - Poetry: 'poetry install' and 'poetry run python loading.py'")
+    exit(1)
 
 
 STATION_NAME = "MADRID-ATOCHA CERCANIAS"
