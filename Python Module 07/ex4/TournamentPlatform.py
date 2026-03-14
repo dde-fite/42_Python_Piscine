@@ -1,3 +1,4 @@
+from typing import Any
 from random import shuffle
 from .TournamentCard import TournamentCard
 
@@ -21,7 +22,7 @@ class TournamentPlatform:
                 f"- Rating: {card.calculate_rating()}\n"
                 f"- Record: {stats['wins']}-{stats['losses']}")
 
-    def create_match(self, card1_id: str, card2_id: str) -> dict:
+    def create_match(self, card1_id: str, card2_id: str) -> dict[str, Any]:
         if (not (card_1 := self.get_card(card1_id))
            or not (card_2 := self.get_card(card2_id))):
             return {'error': 'Incorrect card IDs'}
@@ -44,10 +45,13 @@ class TournamentPlatform:
             return card.calculate_rating()
         return sorted(self.cards, key=get_score, reverse=True)
 
-    def generate_tournament_report(self) -> dict:
+    def generate_tournament_report(self) -> dict[str, Any]:
         return {
             'total_cards': len(self.cards),
             'matches_played': self.played,
-            'avg_rating': int(sum([card.calculate_rating() for card in self.cards]) / len(self.cards)),
+            'avg_rating': int(
+                sum([card.calculate_rating() for card in self.cards])
+                / len(self.cards)
+                ),
             'platform_status': "active"
         }

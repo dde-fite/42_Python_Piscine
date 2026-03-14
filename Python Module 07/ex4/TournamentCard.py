@@ -11,6 +11,10 @@ class TournamentCard(Card, Combatable, Rankable):
         super().__init__(name, cost, rarity)
         self.id: str = id
         self.base_rating = base_rating
+        self.combats: dict[str, list[dict[str, Any]]] = {
+            'attack': [],
+            'defense': []
+        }
         self.stats = {
             'wins': 0,
             'losses': 0
@@ -72,13 +76,10 @@ class TournamentCard(Card, Combatable, Rankable):
 
     def get_rank_info(self) -> dict[str, Any]:
         rating = self.calculate_rating()
-        rank = ""
-
         if rating > 2000:
             rank = "Gold"
         else:
             rank = "Bronze"
-
         return {
             'rank': rank,
             'rating': rating

@@ -23,7 +23,8 @@ print(
 i: int = 1
 for card in tournament.get_leaderboard():
     stats = card.get_tournament_stats()
-    print(f"{i}. {card.name} - Rating: {card.calculate_rating()} ({stats['wins']}-{stats['losses']})")
+    stats = f"{stats['wins']}-{stats['losses']}"
+    print(f"{i}. {card.name} - Rating: {card.calculate_rating()} ({stats})")
     i += 1
 
 print(
