@@ -1,4 +1,6 @@
-import sys, os, site
+import sys
+import os
+import site
 
 is_venv = sys.prefix != sys.base_prefix
 
