@@ -1,3 +1,4 @@
+from typing import Any
 from enum import Enum
 from datetime import datetime
 from pydantic import (BaseModel, Field, ValidationError,
@@ -23,7 +24,7 @@ class AlienContact(BaseModel):
     is_verified: bool = Field(default=False)
 
     @model_validator(mode="after")
-    def check_rules(values):
+    def check_rules(values) -> Any:
         if not values.contact_id.startswith("AC"):
             raise ValueError("contact_id must start with 'AC'")
         if (values.contact_type == ContactType.PHYSICAL
@@ -39,7 +40,7 @@ class AlienContact(BaseModel):
         return values
 
 
-def main():
+def main() -> None:
     contact = AlienContact(
         contact_id="AC_2024_001",
         contact_type=ContactType.RADIO,
