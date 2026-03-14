@@ -15,7 +15,7 @@ print(
     f"\n{tournament.register_card(ice_wizard)}\n"
 
     "\nCreating tournament match...\n"
-    f"{tournament.create_match('dragon_001', 'wizard_001')}\n"
+    f"Match result: {tournament.create_match('dragon_001', 'wizard_001')}\n"
 
     "\nTournament Leaderboard:"
 )

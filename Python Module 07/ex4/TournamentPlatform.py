@@ -17,7 +17,7 @@ class TournamentPlatform:
     def register_card(self, card: TournamentCard) -> str:
         self.cards.append(card)
         stats = card.get_tournament_stats()
-        return (f"{card.get_card_info()['name']} (ID: {card.id})\n"
+        return (f"{card.get_card_info()['name']} (ID: {card.id}):\n"
                 f"- Interfaces [Card, Combatable, Rankable]\n"
                 f"- Rating: {card.calculate_rating()}\n"
                 f"- Record: {stats['wins']}-{stats['losses']}")
