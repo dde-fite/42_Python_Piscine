@@ -18,7 +18,7 @@ print(
     " -  Network access ready\n"
 
     f"[OK] {mtl.__name__} ({mtl.__version__})"
-    " -  Visualization ready\n"
+    " -  Visualization ready"
     )
 
 print("\nAnalyzing Matrix (Renfe's API for passenger traffic by time slot at"
@@ -39,15 +39,20 @@ df["TRAMO_HORARIO"] = pd.Categorical(
 
 print("Generating visualization...")
 plt.figure(figsize=(12, 6))
-plt.plot(df["TRAMO_HORARIO"], df["VIAJEROS_SUBIDOS"], marker='o', label="Subidos")
-plt.plot(df["TRAMO_HORARIO"], df["VIAJEROS_BAJADOS"], marker='o', label="Bajados")
+plt.plot(
+    df["TRAMO_HORARIO"], df["VIAJEROS_SUBIDOS"], marker='o', label="Subidos"
+)
+plt.plot(
+    df["TRAMO_HORARIO"], df["VIAJEROS_BAJADOS"], marker='o', label="Bajados"
+)
 plt.xticks(rotation=45)
 plt.xlabel("Tramo horario")
 plt.ylabel("Número de viajeros")
 plt.title(f"Flujo de viajeros en {STATION_NAME}")
 plt.legend()
 plt.tight_layout()
-print("Analysis complete!")
+
+print("\nAnalysis complete!")
 
 plt.savefig(FILE_NAME)
 print(f"Results saved to: {FILE_NAME}")
