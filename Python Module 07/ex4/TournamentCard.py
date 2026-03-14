@@ -71,7 +71,18 @@ class TournamentCard(Card, Combatable, Rankable):
         self.stats['losses'] += losses
 
     def get_rank_info(self) -> dict[str, Any]:
-        pass
+        rating = self.calculate_rating()
+        rank = ""
+
+        if rating > 2000:
+            rank = "Gold"
+        else:
+            rank = "Bronze"
+
+        return {
+            'rank': rank,
+            'rating': rating
+        }
 
     def get_tournament_stats(self) -> dict[str, Any]:
         return self.stats.copy()

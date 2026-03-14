@@ -15,8 +15,21 @@ print(
     f"\n{tournament.register_card(ice_wizard)}\n"
 
     "\nCreating tournament match...\n"
-    f"{tournament.create_match('dragon_001', 'wizard_001')}"
+    f"{tournament.create_match('dragon_001', 'wizard_001')}\n"
 
     "\nTournament Leaderboard:"
-    f""
+)
+
+i: int = 1
+for card in tournament.get_leaderboard():
+    stats = card.get_tournament_stats()
+    print(f"{i}. {card.name} - Rating: {card.calculate_rating()} ({stats['wins']}-{stats['losses']})")
+    i += 1
+
+print(
+    "\nPlatform Report:\n"
+    f"{tournament.generate_tournament_report()}\n"
+
+    "\n=== Tournament Platform Successfully Deployed! ===\n"
+    "All abstract patterns working together harmoniously!"
 )
