@@ -1,6 +1,12 @@
 [project]
-name = "renfe-data-analyzer"
+name = "loading"
 dynamic = [ "version" ]
+requires-python = ">=3.10"
+dependencies = [
+    "matplotlib==3.10.8",
+    "pandas==2.3.3",
+    "requests==2.32.5"
+]
 
 [tool.poetry]
 version = "1.0"
