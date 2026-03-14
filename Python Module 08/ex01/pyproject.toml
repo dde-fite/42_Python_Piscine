@@ -1,0 +1,6 @@
+[project]
+name = "renfe-data-analyzer"
+dynamic = [ "version" ]
+
+[tool.poetry]
+version = "1.0"
