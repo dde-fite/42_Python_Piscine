@@ -23,20 +23,25 @@ def mage_stats(mages: list[dict[str, Any]]) -> dict[str, int | float]:
     }
 
 
-artifacts = artifact_sorter([
-    {'name': 'Fire Staff', 'power': 92, 'type': 'Depressive'},
-    {'name': 'Crystal Orb', 'power': 85, 'type': 'Estimulant'},
-    {'name': 'heroin', 'power': 7, 'type': 'Depressive'},
-    {'name': 'lsd', 'power': 12, 'type': 'Alucinating'},
-])
+def main() -> None:
+    artifacts = artifact_sorter([
+        {'name': 'Fire Staff', 'power': 92, 'type': 'Depressive'},
+        {'name': 'Crystal Orb', 'power': 85, 'type': 'Estimulant'},
+        {'name': 'heroin', 'power': 7, 'type': 'Depressive'},
+        {'name': 'lsd', 'power': 12, 'type': 'Alucinating'},
+    ])
 
-spells = spell_transformer(["fireball", "heal", "shield"])
+    spells = spell_transformer(["fireball", "heal", "shield"])
 
-print(
-    "\nTesting artifact sorter...\n"
-    f"{artifacts[0]['name']} ({artifacts[0]['power']} power) comes before "
-    f"{artifacts[1]['name']} ({artifacts[1]['power']} power)\n"
+    print(
+        "\nTesting artifact sorter...\n"
+        f"{artifacts[0]['name']} ({artifacts[0]['power']} power) comes before "
+        f"{artifacts[1]['name']} ({artifacts[1]['power']} power)\n"
 
-    "\nTesting spell transformer...\n"
-    f"{spells[0]} {spells[1]} {spells[2]}"
-)
+        "\nTesting spell transformer...\n"
+        f"{' '.join(spells)}"
+    )
+
+
+if __name__ == "__main__":
+    main()
