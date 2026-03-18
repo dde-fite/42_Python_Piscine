@@ -28,15 +28,13 @@ def enchantment_factory(enchantment_type: str) -> Callable[[str], str]:
 
 
 def memory_vault() -> dict[str, Callable[..., Any]]:
-    memory: dict[Any, Any] = {}
+    __memory: dict[Any, Any] = {}
 
     def store(key: Any, value: Any) -> None:
-        nonlocal memory
-        memory[key] = value
+        __memory[key] = value
 
     def recall(key: Any) -> Any:
-        nonlocal memory
-        return memory.get(key, "Memory not found")
+        return __memory.get(key, "Memory not found")
     return {
         "store": store,
         "recall": recall
