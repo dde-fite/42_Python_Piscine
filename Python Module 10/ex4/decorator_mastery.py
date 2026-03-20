@@ -1,8 +1,16 @@
-from typing import Callable
+from typing import Callable, Any
+from time import time_ns
+# from functools import wraps
 
 
-def spell_timer(func: Callable) -> Callable:
-    pass
+def spell_timer(func: Callable[..., Any]) -> Callable[..., Any]:
+    def measure():
+        print(f"Casting {func.__name__}...")
+        start = time_ns()
+        res = func()
+        print(f"Spell com pleted in {(time_ns() - start) / 10000} seconds")
+        return res
+    return measure
 
 
 def power_validator(min_power: int) -> Callable:
@@ -22,8 +30,14 @@ class MageGuild:
         pass
 
 
+@spell_timer
+def fireball() -> str:
+    return "Fireball cast!"
+
+
 def main() -> None:
-    print("")
+    print("\nTesting spell timer...")
+    print(f"Result: {fireball()}")
 
 
 if __name__ == "__main__":
